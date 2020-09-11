@@ -1,0 +1,28 @@
+[package]
+name = "ss"
+version = "0.1.0"
+authors = ["emacsist <emacsist@qq.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "client"
+path = "src/client/client.rs"
+
+[[bin]]
+name = "server"
+path = "src/server/server.rs"
+
+[lib]
+name = "utils"
+path = "src/utils/lib.rs"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+once_cell = "1.4.1"
+log = "0.4.11"
+#pretty_env_logger = "0.4"
+env_logger = "0.7.1"
+aes = "0.5.0"
