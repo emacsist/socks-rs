@@ -40,8 +40,8 @@ fn bind() {
     };
 }
 
-/// 直接加密后发送即可
-///
+
+/// 目前只是单纯转发
 fn handle_client_connection(mut ss_client_stream: TcpStream) {
     let server_addr = APP.full_server().parse();
     let ss_server_stream = TcpStream::connect_timeout(&server_addr.unwrap(), Duration::from_secs(APP.timeout));
