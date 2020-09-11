@@ -125,12 +125,14 @@ fn decode_sslocal_request(ss_local_stream: &mut TcpStream) {
                 loop {
                     if let (Some(mut data), n) = utils::read_stream(ss_local_stream) {
                         remote_tcp_stream.write_all(&mut data[0..n]);
+                        remote_tcp_stream.flush();
                     } else {
                         info!("ss local no data to read. so return. {:?}", ss_local_stream);
                         break;
                     }
                     if let (Some(mut data), n) = utils::read_stream(&mut remote_tcp_stream) {
                         ss_local_stream.write_all(&mut data[0..n]);
+                        ss_local_stream.flush();
                     } else {
                         info!("remote server no data return. so exit. {:?}", remote_tcp_stream);
                         break;
